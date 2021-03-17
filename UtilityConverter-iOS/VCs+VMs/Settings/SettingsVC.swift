@@ -9,10 +9,6 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-protocol DecimalValueDelegate: class {
-    
-    func sendSelectedDecimalValue(option: String)
-}
 
 class SettingsVC: UIViewController {
 
@@ -25,12 +21,12 @@ class SettingsVC: UIViewController {
     @IBOutlet weak var btnFourDecimal        : UIButton!
     
     @IBOutlet weak var lblSelectedValue      : UILabel!
+    @IBOutlet var firstBackgroundView: UIView!
     
     // MARK: - Variables
     
-    weak var decimalDelegate: DecimalValueDelegate?
-    
     private let bag = DisposeBag()
+    
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
@@ -49,7 +45,7 @@ class SettingsVC: UIViewController {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         
-        settingsBackgroundView.applyGradient(isTopBottom: true, colorArray: UIColor.GradientColor.HomeView)
+        firstBackgroundView.applyGradient(isTopBottom: true, colorArray: UIColor.GradientColor.HomeView)
         
         btnTwoDecimal.layer.cornerRadius   = 10
         btnThreeDecimal.layer.cornerRadius = 10
@@ -90,19 +86,25 @@ class SettingsVC: UIViewController {
     // MARK: - Outlet Actions
     
     func didTapOnBtnTwoDecimal() {
-        decimalDelegate?.sendSelectedDecimalValue(option: "Two")
+        let defaults = UserDefaults.standard
+        defaults.set("2", forKey: "DecimalKey")
+        
         lblSelectedValue.text = "Selected Value: 0.00"
     }
     
     func didTapOnBtnThreeDecimal() {
-        decimalDelegate?.sendSelectedDecimalValue(option: "Three")
+        let defaults = UserDefaults.standard
+        defaults.set("3", forKey: "DecimalKey")
+        
         lblSelectedValue.text = "Selected Value: 0.000"
     }
     
     func didTapOnBtnFourDecimal() {
-        decimalDelegate?.sendSelectedDecimalValue(option: "Four")
+        let defaults = UserDefaults.standard
+        defaults.set("4", forKey: "DecimalKey")
+        
         lblSelectedValue.text = "Selected Value: 0.0000"
-        print("Four clicked")
     }
     
+
 }

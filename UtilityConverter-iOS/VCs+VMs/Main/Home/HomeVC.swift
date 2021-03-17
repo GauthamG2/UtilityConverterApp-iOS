@@ -12,6 +12,7 @@ import RxSwift
 class HomeVC: UIViewController {
     
     // MARK: - Outlets
+    @IBOutlet weak var firstBackgroundView: UIView!
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var homeCollectionView: UICollectionView! {
         didSet {
@@ -33,16 +34,20 @@ class HomeVC: UIViewController {
         vm.getConversionType()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.tabBarController?.tabBar.barTintColor = #colorLiteral(red: 0.007843137255, green: 0.08235294118, blue: 0.1568627451, alpha: 1)
+        self.navigationController!.navigationBar.tintColor = UIColor.black
+    }
     // MARK: - ConfigUI
     
     func configUI() {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
-        
+        self.navigationController!.navigationBar.tintColor = UIColor.black
         self.navigationController?.navigationBar.barTintColor = .white
         self.tabBarController?.tabBar.barTintColor = #colorLiteral(red: 0.007843137255, green: 0.08235294118, blue: 0.1568627451, alpha: 1)
         
-        backgroundView.applyGradient(isTopBottom: true, colorArray: UIColor.GradientColor.HomeView)
+        firstBackgroundView.applyGradient(isTopBottom: true, colorArray: UIColor.GradientColor.HomeView)
     }
 }
 
@@ -76,6 +81,9 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource {
             self.navigationController?.pushViewController(ViewController!, animated: true)
         case 4:
             let ViewController = UIStoryboard.init(name: "Conversion", bundle: Bundle.main).instantiateViewController(withIdentifier: "VolumeLiquidVC") as? VolumeLiquidVC
+            self.navigationController?.pushViewController(ViewController!, animated: true)
+        case 5:
+            let ViewController = UIStoryboard.init(name: "Conversion", bundle: Bundle.main).instantiateViewController(withIdentifier: "TimeVC") as? TimeVC
             self.navigationController?.pushViewController(ViewController!, animated: true)
         default:
             break

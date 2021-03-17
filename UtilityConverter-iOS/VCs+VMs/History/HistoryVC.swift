@@ -13,6 +13,7 @@ class HistoryVC: UIViewController {
     
     // MARK: - Outlets
     
+    @IBOutlet var firstBackgroundView   : UIView!
     @IBOutlet weak var backgroundView   : UIView!
     @IBOutlet weak var btnSegmentControl: UISegmentedControl!
     @IBOutlet weak var lblTitle         : UILabel!
@@ -54,7 +55,7 @@ class HistoryVC: UIViewController {
     // MARK: - ConfigUI
     
     func configUI() {
-        backgroundView.applyGradient(isTopBottom: true, colorArray: UIColor.GradientColor.HomeView)
+        firstBackgroundView.applyGradient(isTopBottom: true, colorArray: UIColor.GradientColor.HomeView)
         
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
@@ -101,24 +102,28 @@ class HistoryVC: UIViewController {
         
         case 0:
             conversionType = WEIGHT_USER_DEFAULTS_KEY
-            icon = UIImage(named: "weight")!
+            icon = UIImage(named: "weight-128")!
             lblTitle.text = "Weight History"
         case 1:
             conversionType = TEMPERATURE_USER_DEFAULTS_KEY
-            icon = UIImage(named: "weight")!
+            icon = UIImage(named: "temperature-128")!
             lblTitle.text = "Temperature History"
         case 2:
             conversionType = LENGTH_USER_DEFAULTS_KEY
-            icon = UIImage(named: "weight")!
+            icon = UIImage(named: "length-128")!
             lblTitle.text = "Length History"
         case 3:
             conversionType = SPEED_USER_DEFAULTS_KEY
-            icon = UIImage(named: "weight")!
+            icon = UIImage(named: "speed-128")!
             lblTitle.text = "Speed History"
         case 4:
             conversionType = VOLUMELIQUID_USER_DEFAULTS_KEY
-            icon = UIImage(named: "weight")!
+            icon = UIImage(named: "volume-128")!
             lblTitle.text = "Volume History"
+        case 5:
+            conversionType = TIME_USER_DEFAULTS_KEY
+            icon = UIImage(named: "date-128")!
+            lblTitle.text = "Time History"
         default:
             break
         }
@@ -147,6 +152,9 @@ extension HistoryVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: HistoryTVC = historyTableView.dequeueReusableCell(withIdentifier: "HistoryTVC", for: indexPath) as! HistoryTVC
+        cell.textLabel?.numberOfLines = 0;
+        cell.textLabel?.lineBreakMode = .byWordWrapping
+        
         cell.lblConversion.text = historyData[indexPath.row].getHistoryConversion()
         cell.iconImageView.image = historyData[indexPath.row].getHistoryIcon()
         
@@ -154,6 +162,8 @@ extension HistoryVC: UITableViewDelegate, UITableViewDataSource {
         cell.viewBackground.layer.borderColor     = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         cell.viewBackground.layer.cornerRadius    = 10
         cell.viewBackground.layer.backgroundColor = #colorLiteral(red: 0.007843137255, green: 0.08235294118, blue: 0.1568627451, alpha: 1)
+        
+       
         
         cell.isUserInteractionEnabled = false
         

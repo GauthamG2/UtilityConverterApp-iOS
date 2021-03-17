@@ -29,6 +29,8 @@ class TemperatureVC: UIViewController, CustomKeyBoardDelegate {
     var activeTextField = UITextField()
     var outerStackViewTopConstraintDefaultHeight: CGFloat = 20
     
+    var precisionValue: Double = 100.0
+    
     // MARK: - LifeCycle
     
     override func viewDidLoad() {
@@ -41,6 +43,8 @@ class TemperatureVC: UIViewController, CustomKeyBoardDelegate {
         if isTextFieldsEmpty() {
             self.navigationItem.rightBarButtonItem!.isEnabled = false;
         }
+        
+        setDecimalValue()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -49,8 +53,7 @@ class TemperatureVC: UIViewController, CustomKeyBoardDelegate {
         fahrenheitTF.setAsNumericKeyboard(delegate: self)
         kelvinTF.setAsNumericKeyboard(delegate: self)
         
-        // Add an observer to track keyboard show event
-        // ad an observer to track keyboard show event
+        // Observer to track keyboard show event
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)),
                                                name: UIResponder.keyboardWillShowNotification, object: nil)
         
@@ -67,8 +70,7 @@ class TemperatureVC: UIViewController, CustomKeyBoardDelegate {
         viewBackground.layer.cornerRadius = 10
     }
     
-    // MARK: Show keyboard function
-    // This function will recognize the first responder and adjust the textfield accordingly considering the keyboard
+    // MARK: - Show keyboard function , This function will recognize the first responder and adjust the textfield accordingly considering the keyboard
     
     @objc func keyboardWillShow(notification: NSNotification) {
         let firstResponder = self.findFirstResponder(inView: self.view)
@@ -103,8 +105,7 @@ class TemperatureVC: UIViewController, CustomKeyBoardDelegate {
         }
     }
     
-    // MARK: - Hide keyboard function
-    // This function will be called by the tap gesture outside the text field
+    // MARK: - Hide keyboard function, This function will be called by the tap gesture outside the text field
     
     @objc func keyboardWillHide() {
         view.endEditing(true)
@@ -115,8 +116,7 @@ class TemperatureVC: UIViewController, CustomKeyBoardDelegate {
         })
     }
     
-    // MARK: Find the first responder
-    // This fucntion will find the first responder in the UIView, Return a UIView or subview
+    // MARK: - Find the first responder, This fucntion will find the first responder in the UIView, Return a UIView or subview
     
     func findFirstResponder(inView view: UIView) -> UIView? {
         for subView in view.subviews {
@@ -131,6 +131,8 @@ class TemperatureVC: UIViewController, CustomKeyBoardDelegate {
         
         return nil
     }
+    
+    // MARK: - Handle the textfield editing
     
     @IBAction func handleTextFieldChange(_ textField: UITextField) {
         var unit: TemperatureUnit?
@@ -154,6 +156,8 @@ class TemperatureVC: UIViewController, CustomKeyBoardDelegate {
         }
     }
     
+    // MARK: Checking if the textfield is empty
+    
     func isTextFieldsEmpty() -> Bool {
         if !(celsiusTF.text?.isEmpty)! && !(fahrenheitTF.text?.isEmpty)! &&
             !(kelvinTF.text?.isEmpty)! {
@@ -161,6 +165,8 @@ class TemperatureVC: UIViewController, CustomKeyBoardDelegate {
         }
         return true
     }
+    
+    // MARK: - Updating textfields
     
     func updateTextFields(textField: UITextField, unit: TemperatureUnit) -> Void {
         if let input = textField.text {
@@ -177,15 +183,17 @@ class TemperatureVC: UIViewController, CustomKeyBoardDelegate {
                         let textField = mapUnitToTextField(unit: _unit)
                         let result = temperature.convert(unit: _unit)
                         
-                        //rounding off to 4 decimal places
-                        let roundedResult = Double(round(10000 * result) / 10000)
+                        // Rounding off to required precision value
                         
+                        let roundedResult = Double(round(precisionValue * result) / precisionValue)
                         textField.text = String(roundedResult)
                     }
                 }
             }
         }
     }
+    
+    // MARK: - Saving History, This function will save the history to user defaults and check for the no of elements saved
     
     @IBAction func handleSaveButtonPress(_ sender: UIBarButtonItem) {
         
@@ -211,6 +219,8 @@ class TemperatureVC: UIViewController, CustomKeyBoardDelegate {
         
     }
     
+    // MARK: - Mapping units to textfields
+    
     func mapUnitToTextField(unit: TemperatureUnit) -> UITextField {
         var textField = celsiusTF
         switch unit {
@@ -224,11 +234,15 @@ class TemperatureVC: UIViewController, CustomKeyBoardDelegate {
         return textField!
     }
     
+    // MARK: Clearing text fields
+    
     func clearTextFields() {
         celsiusTF.text    = ""
-        fahrenheitTF.text        = ""
-        kelvinTF.text       = ""
+        fahrenheitTF.text = ""
+        kelvinTF.text     = ""
     }
+    
+    // MARK:  Delegates of CustomKeyPad, This function is a part of the CustomNumericKeyboardDelegate interface
     
     func retractKeyPressed() {
         keyboardWillHide()
@@ -238,16 +252,30 @@ class TemperatureVC: UIViewController, CustomKeyBoardDelegate {
         print("Numeric key \(key) pressed!")
     }
     
-    /// This function is a part of the CustomNumericKeyboardDelegate interface
-    /// and will be triggered when the backspace button is pressed on the custom keyboard.
     func backspacePressed() {
         print("Backspace pressed!")
     }
     
-    /// This function is a part of the CustomNumericKeyboardDelegate interface
-    /// and will be triggered when the symobol buttons are pressed on the custom keyboard.
     func symbolPressed(symbol: String) {
         print("Symbol \(symbol) pressed!")
+    }
+    
+    // MARK:  Check for precision value from settings screen
+    
+    func setDecimalValue() {
+        
+        let precision =  UserDefaults.standard.object(forKey: "DecimalKey") as? String ?? ""
+        
+        switch precision {
+        case "2":
+            precisionValue = 100
+        case "3":
+            precisionValue = 1000
+        case "4":
+            precisionValue = 10000
+        default:
+            precisionValue = 100
+        }
     }
 }
 

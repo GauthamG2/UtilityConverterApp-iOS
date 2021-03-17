@@ -33,24 +33,25 @@
                                             <constraint firstAttribute="height" constant="44" id="JaB-fn-Zbw"/>
                                         </constraints>
                                         <segments>
-                                            <segment title="" image="square.and.arrow.up" catalog="system"/>
-                                            <segment title="Temperature"/>
-                                            <segment title="Length"/>
-                                            <segment title="Speed"/>
-                                            <segment title="Volume"/>
+                                            <segment title="" image="weight-24"/>
+                                            <segment title="" image="temperature-24"/>
+                                            <segment title="" image="length-24"/>
+                                            <segment title="" image="speed-24"/>
+                                            <segment title="" image="volume-24"/>
+                                            <segment title="" image="date-24"/>
                                         </segments>
                                         <connections>
                                             <action selector="handleSegementedcontrolChange:" destination="nVu-VY-sec" eventType="valueChanged" id="pxw-mz-iaD"/>
                                         </connections>
                                     </segmentedControl>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rfm-fS-26c">
-                                        <rect key="frame" x="187" y="74" width="40" height="25"/>
+                                        <rect key="frame" x="190.33333333333334" y="74" width="33.666666666666657" height="21"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="18"/>
                                         <color key="textColor" red="0.047253210279999999" green="0.089862344129999994" blue="0.23388915699999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="THq-h8-Ag7">
-                                        <rect key="frame" x="10" y="119" width="394" height="524"/>
+                                        <rect key="frame" x="10" y="115" width="394" height="528"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="HistoryTVC" rowHeight="100" id="UrM-ey-OT6" customClass="HistoryTVC" customModule="UtilityConverter_iOS" customModuleProvider="target">
@@ -69,9 +70,11 @@
                                                                         <constraint firstAttribute="width" secondItem="viB-rP-prC" secondAttribute="height" multiplier="1:1" id="4Oy-jM-OJB"/>
                                                                     </constraints>
                                                                 </imageView>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O4l-WJ-5km">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O4l-WJ-5km">
                                                                     <rect key="frame" x="80" y="10" width="284" height="60"/>
-                                                                    <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans" pointSize="17"/>
+                                                                    <string key="text">Label
+</string>
+                                                                    <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans" pointSize="14"/>
                                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
@@ -131,7 +134,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="HISTORY" id="emE-f3-YFw">
                         <barButtonItem key="backBarButtonItem" title=" " id="Jf7-g3-fls"/>
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="Txd-8Z-5H2">
+                        <barButtonItem key="rightBarButtonItem" image="trash" id="Txd-8Z-5H2">
                             <connections>
                                 <action selector="handleClearHistoryAction:" destination="nVu-VY-sec" id="EkQ-3D-yB6"/>
                             </connections>
@@ -142,6 +145,7 @@
                     <connections>
                         <outlet property="backgroundView" destination="YO1-Ib-ikj" id="01e-G3-90p"/>
                         <outlet property="btnSegmentControl" destination="SAD-fh-cgh" id="gHY-g7-QXE"/>
+                        <outlet property="firstBackgroundView" destination="rcr-AM-7Yr" id="GwN-bq-1Zt"/>
                         <outlet property="historyTableView" destination="THq-h8-Ag7" id="2hO-lK-wq3"/>
                         <outlet property="lblTitle" destination="rfm-fS-26c" id="f4M-d4-xiQ"/>
                     </connections>
@@ -149,23 +153,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4vo-L3-SQ1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1142.0289855072465" y="835.59782608695662"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="G84-eG-mxd">
-            <objects>
-                <viewController id="ZTF-TG-Rvq" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="JJe-G6-ruJ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="Yx0-U5-ReK"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="LYa-k0-wje"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Gpg-nh-mS9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1142" y="1659"/>
         </scene>
         <!--SETTINGS-->
         <scene sceneID="WnW-jH-R8A">
@@ -184,7 +171,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PKC-lg-nDX">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set Decimal Value" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="coU-dB-vI6">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set Precision Value" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="coU-dB-vI6">
                                                         <rect key="frame" x="20" y="40" width="374" height="27.333333333333329"/>
                                                         <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="20"/>
                                                         <color key="textColor" red="0.066520753040000005" green="0.12650380289999999" blue="0.32925768979999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -280,7 +267,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstItem="mDV-vD-6ci" firstAttribute="centerX" secondItem="PKC-lg-nDX" secondAttribute="centerX" id="2cP-gN-y28"/>
                                                     <constraint firstAttribute="trailing" secondItem="coU-dB-vI6" secondAttribute="trailing" constant="20" id="Msv-Iv-ABh"/>
@@ -304,17 +291,17 @@
                                         </constraints>
                                     </scrollView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="gJs-so-axX" firstAttribute="top" secondItem="2v3-lL-zKU" secondAttribute="top" id="4ky-Dj-wiQ"/>
-                                    <constraint firstAttribute="trailing" secondItem="gJs-so-axX" secondAttribute="trailing" id="HiO-63-jHd"/>
-                                    <constraint firstItem="gJs-so-axX" firstAttribute="leading" secondItem="2v3-lL-zKU" secondAttribute="leading" id="NyL-NK-lBg"/>
-                                    <constraint firstAttribute="bottom" secondItem="gJs-so-axX" secondAttribute="bottom" id="Pm5-sR-Zju"/>
+                                    <constraint firstItem="gJs-so-axX" firstAttribute="leading" secondItem="2v3-lL-zKU" secondAttribute="leading" id="DiM-Mc-XPx"/>
+                                    <constraint firstItem="gJs-so-axX" firstAttribute="top" secondItem="2v3-lL-zKU" secondAttribute="top" id="JgK-go-Qbu"/>
+                                    <constraint firstAttribute="trailing" secondItem="gJs-so-axX" secondAttribute="trailing" id="Qpt-a1-iWB"/>
+                                    <constraint firstAttribute="bottom" secondItem="gJs-so-axX" secondAttribute="bottom" id="ccl-AB-EDB"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="kww-bI-rcG"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="2v3-lL-zKU" firstAttribute="top" secondItem="kww-bI-rcG" secondAttribute="top" id="CaS-mQ-1KX"/>
                             <constraint firstItem="2v3-lL-zKU" firstAttribute="leading" secondItem="kww-bI-rcG" secondAttribute="leading" id="LN5-bM-kXU"/>
@@ -329,19 +316,20 @@
                         <outlet property="btnFourDecimal" destination="Y5A-3d-2Yu" id="CMP-Ps-O17"/>
                         <outlet property="btnThreeDecimal" destination="bQi-P5-aN5" id="rio-WV-o6u"/>
                         <outlet property="btnTwoDecimal" destination="rcK-Op-Gwi" id="Fay-cb-4RL"/>
+                        <outlet property="firstBackgroundView" destination="txF-gf-XEt" id="FV9-bp-C5t"/>
                         <outlet property="lblSelectedValue" destination="ybj-hN-t0S" id="tvJ-Oh-d1B"/>
                         <outlet property="settingsBackgroundView" destination="PKC-lg-nDX" id="gbY-vC-Tmy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="diA-wO-tX6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1140.5797101449277" y="2491.304347826087"/>
+            <point key="canvasLocation" x="1142" y="1633"/>
         </scene>
-        <!--History-->
+        <!--Navigation Controller-->
         <scene sceneID="STi-HQ-BgO">
             <objects>
                 <navigationController storyboardIdentifier="HistoryNC" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="wfg-yd-3qc" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="History" id="3HL-rC-W2N"/>
+                    <tabBarItem key="tabBarItem" title="" image="history-32" selectedImage="history-32" id="3HL-rC-W2N"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="9UI-Kg-4aE">
@@ -357,31 +345,11 @@
             </objects>
             <point key="canvasLocation" x="235" y="836"/>
         </scene>
-        <!--Constant-->
-        <scene sceneID="jlR-wE-y0n">
-            <objects>
-                <navigationController storyboardIdentifier="ConstantNC" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="lgR-ld-yaB" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Constant" id="VrQ-mx-7Lx"/>
-                    <toolbarItems/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="mgb-fY-9JQ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="ZTF-TG-Rvq" kind="relationship" relationship="rootViewController" id="DUI-uX-Jqd"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ZlS-Jv-5F8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="235" y="1659"/>
-        </scene>
-        <!--Settings-->
+        <!--Navigation Controller-->
         <scene sceneID="GqD-Qt-qmW">
             <objects>
                 <navigationController storyboardIdentifier="SettingsNC" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="kyG-nc-9Dc" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Settings" id="EEd-ex-taa"/>
+                    <tabBarItem key="tabBarItem" title="" image="settings-32" selectedImage="settings-32" id="EEd-ex-taa"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="CZA-wX-5Ox">
@@ -395,14 +363,19 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="67L-EX-JiB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="233" y="2492"/>
+            <point key="canvasLocation" x="233" y="1633"/>
         </scene>
     </scenes>
     <resources>
-        <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <image name="date-24" width="24" height="24"/>
+        <image name="history-32" width="32" height="32"/>
+        <image name="length-24" width="24" height="24"/>
+        <image name="settings-32" width="32" height="32"/>
+        <image name="speed-24" width="24" height="24"/>
+        <image name="temperature-24" width="24" height="24"/>
+        <image name="trash" width="24" height="24"/>
+        <image name="volume-24" width="24" height="24"/>
+        <image name="weight-24" width="24" height="24"/>
         <systemColor name="systemGray5Color">
             <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

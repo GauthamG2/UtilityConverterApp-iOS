@@ -14,9 +14,10 @@
 		AC12583B25E442D700ECD058 /* Speed.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC12583A25E442D700ECD058 /* Speed.swift */; };
 		AC15934525D96894007558C4 /* MainTBC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC15934425D96894007558C4 /* MainTBC.swift */; };
 		AC15934A25D97237007558C4 /* HistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC15934925D97237007558C4 /* HistoryVC.swift */; };
-		AC15934E25D97250007558C4 /* HistoryVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC15934D25D97250007558C4 /* HistoryVM.swift */; };
 		AC15935125D97269007558C4 /* HistoryTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC15935025D97269007558C4 /* HistoryTVC.swift */; };
 		AC48A55425E232490043A00A /* Weight.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC48A55325E232490043A00A /* Weight.swift */; };
+		AC7E3FBC26022989007F4755 /* TimeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7E3FBB26022989007F4755 /* TimeVC.swift */; };
+		AC7E3FC026022B0D007F4755 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7E3FBF26022B0D007F4755 /* Date.swift */; };
 		AC868C9425E30BED0095691A /* Conversion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC947D0225DFBCCD00E5F5DE /* Conversion.storyboard */; };
 		AC868C9725E30C000095691A /* UITextField+CustomKeyBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC868C9025E30B780095691A /* UITextField+CustomKeyBoard.swift */; };
 		AC868C9A25E30E170095691A /* WeightVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB171B225E030AF001FC1DC /* WeightVC.swift */; };
@@ -35,16 +36,10 @@
 		ACB171A125E003F2001FC1DC /* OpenSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ACB1719625E003F2001FC1DC /* OpenSans-BoldItalic.ttf */; };
 		ACB171A425E004AC001FC1DC /* Utility.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACB171A325E004AC001FC1DC /* Utility.storyboard */; };
 		ACB171A925E02B03001FC1DC /* Localizator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB171A825E02B03001FC1DC /* Localizator.swift */; };
-		ACB171B725E030BE001FC1DC /* WeightVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB171B625E030BE001FC1DC /* WeightVM.swift */; };
 		ACB171BA25E030D8001FC1DC /* TemperatureVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB171B925E030D8001FC1DC /* TemperatureVC.swift */; };
-		ACB171BD25E030E6001FC1DC /* TemperatureVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB171BC25E030E6001FC1DC /* TemperatureVM.swift */; };
 		ACB171C025E03154001FC1DC /* LengthVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB171BF25E03154001FC1DC /* LengthVC.swift */; };
-		ACB171C325E03163001FC1DC /* LengthVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB171C225E03163001FC1DC /* LengthVM.swift */; };
 		ACB171C625E03177001FC1DC /* SpeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB171C525E03177001FC1DC /* SpeedVC.swift */; };
-		ACB171C925E03185001FC1DC /* SpeedVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB171C825E03185001FC1DC /* SpeedVM.swift */; };
 		ACB171CC25E031A2001FC1DC /* VolumeLiquidVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB171CB25E031A2001FC1DC /* VolumeLiquidVC.swift */; };
-		ACB171CF25E031AE001FC1DC /* VolumeLiquidVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB171CE25E031AE001FC1DC /* VolumeLiquidVM.swift */; };
-		ACB171D325E03596001FC1DC /* SettingsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB171D225E03596001FC1DC /* SettingsVM.swift */; };
 		ACB171D625E035A6001FC1DC /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB171D525E035A6001FC1DC /* SettingsVC.swift */; };
 		ACB171DE25E037ED001FC1DC /* ApplicationServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB171DD25E037ED001FC1DC /* ApplicationServiceProvider.swift */; };
 		ACB171EC25E03D7C001FC1DC /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = ACB171E525E03D7C001FC1DC /* UIScrollView+TPKeyboardAvoidingAdditions.m */; };
@@ -75,9 +70,10 @@
 		AC12583A25E442D700ECD058 /* Speed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Speed.swift; sourceTree = "<group>"; };
 		AC15934425D96894007558C4 /* MainTBC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTBC.swift; sourceTree = "<group>"; };
 		AC15934925D97237007558C4 /* HistoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryVC.swift; sourceTree = "<group>"; };
-		AC15934D25D97250007558C4 /* HistoryVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryVM.swift; sourceTree = "<group>"; };
 		AC15935025D97269007558C4 /* HistoryTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTVC.swift; sourceTree = "<group>"; };
 		AC48A55325E232490043A00A /* Weight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weight.swift; sourceTree = "<group>"; };
+		AC7E3FBB26022989007F4755 /* TimeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeVC.swift; sourceTree = "<group>"; };
+		AC7E3FBF26022B0D007F4755 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		AC868C9025E30B780095691A /* UITextField+CustomKeyBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+CustomKeyBoard.swift"; sourceTree = "<group>"; };
 		AC947D0225DFBCCD00E5F5DE /* Conversion.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Conversion.storyboard; sourceTree = "<group>"; };
 		ACA29CB325ED7CF9004E55B2 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -96,16 +92,10 @@
 		ACB171A325E004AC001FC1DC /* Utility.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Utility.storyboard; sourceTree = "<group>"; };
 		ACB171A825E02B03001FC1DC /* Localizator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localizator.swift; sourceTree = "<group>"; };
 		ACB171B225E030AF001FC1DC /* WeightVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightVC.swift; sourceTree = "<group>"; };
-		ACB171B625E030BE001FC1DC /* WeightVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightVM.swift; sourceTree = "<group>"; };
 		ACB171B925E030D8001FC1DC /* TemperatureVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureVC.swift; sourceTree = "<group>"; };
-		ACB171BC25E030E6001FC1DC /* TemperatureVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureVM.swift; sourceTree = "<group>"; };
 		ACB171BF25E03154001FC1DC /* LengthVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LengthVC.swift; sourceTree = "<group>"; };
-		ACB171C225E03163001FC1DC /* LengthVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LengthVM.swift; sourceTree = "<group>"; };
 		ACB171C525E03177001FC1DC /* SpeedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedVC.swift; sourceTree = "<group>"; };
-		ACB171C825E03185001FC1DC /* SpeedVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedVM.swift; sourceTree = "<group>"; };
 		ACB171CB25E031A2001FC1DC /* VolumeLiquidVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeLiquidVC.swift; sourceTree = "<group>"; };
-		ACB171CE25E031AE001FC1DC /* VolumeLiquidVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeLiquidVM.swift; sourceTree = "<group>"; };
-		ACB171D225E03596001FC1DC /* SettingsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVM.swift; sourceTree = "<group>"; };
 		ACB171D525E035A6001FC1DC /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		ACB171DD25E037ED001FC1DC /* ApplicationServiceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationServiceProvider.swift; sourceTree = "<group>"; };
 		ACB171E325E03D7C001FC1DC /* TPKeyboardAvoidingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingScrollView.h; sourceTree = "<group>"; };
@@ -176,7 +166,6 @@
 			isa = PBXGroup;
 			children = (
 				AC15934925D97237007558C4 /* HistoryVC.swift */,
-				AC15934D25D97250007558C4 /* HistoryVM.swift */,
 				AC15935025D97269007558C4 /* HistoryTVC.swift */,
 			);
 			path = History;
@@ -190,6 +179,7 @@
 				AC12583725E4385300ECD058 /* Length.swift */,
 				AC12583A25E442D700ECD058 /* Speed.swift */,
 				AC12583425E437CF00ECD058 /* Volume.swift */,
+				AC7E3FBF26022B0D007F4755 /* Date.swift */,
 			);
 			path = Conversions;
 			sourceTree = "<group>";
@@ -202,6 +192,14 @@
 				ACE47B0D25F8FE9A00AB878E /* UITableView+TableView.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		AC7E3FBA2602296A007F4755 /* Date */ = {
+			isa = PBXGroup;
+			children = (
+				AC7E3FBB26022989007F4755 /* TimeVC.swift */,
+			);
+			path = Date;
 			sourceTree = "<group>";
 		};
 		ACB1718925E002DE001FC1DC /* Fonts */ = {
@@ -244,7 +242,6 @@
 			isa = PBXGroup;
 			children = (
 				ACB171B225E030AF001FC1DC /* WeightVC.swift */,
-				ACB171B625E030BE001FC1DC /* WeightVM.swift */,
 			);
 			path = Weight;
 			sourceTree = "<group>";
@@ -253,7 +250,6 @@
 			isa = PBXGroup;
 			children = (
 				ACB171B925E030D8001FC1DC /* TemperatureVC.swift */,
-				ACB171BC25E030E6001FC1DC /* TemperatureVM.swift */,
 			);
 			path = Temperature;
 			sourceTree = "<group>";
@@ -262,7 +258,6 @@
 			isa = PBXGroup;
 			children = (
 				ACB171BF25E03154001FC1DC /* LengthVC.swift */,
-				ACB171C225E03163001FC1DC /* LengthVM.swift */,
 			);
 			path = Length;
 			sourceTree = "<group>";
@@ -271,7 +266,6 @@
 			isa = PBXGroup;
 			children = (
 				ACB171C525E03177001FC1DC /* SpeedVC.swift */,
-				ACB171C825E03185001FC1DC /* SpeedVM.swift */,
 			);
 			path = Speed;
 			sourceTree = "<group>";
@@ -280,7 +274,6 @@
 			isa = PBXGroup;
 			children = (
 				ACB171CB25E031A2001FC1DC /* VolumeLiquidVC.swift */,
-				ACB171CE25E031AE001FC1DC /* VolumeLiquidVM.swift */,
 			);
 			path = VolumeLiquid;
 			sourceTree = "<group>";
@@ -289,7 +282,6 @@
 			isa = PBXGroup;
 			children = (
 				ACB171D525E035A6001FC1DC /* SettingsVC.swift */,
-				ACB171D225E03596001FC1DC /* SettingsVM.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -431,6 +423,7 @@
 				ACB171AF25E03068001FC1DC /* Length */,
 				ACB171B025E03073001FC1DC /* Speed */,
 				ACB171B125E0307C001FC1DC /* VolumeLiquid */,
+				AC7E3FBA2602296A007F4755 /* Date */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -566,7 +559,6 @@
 				ACB171CC25E031A2001FC1DC /* VolumeLiquidVC.swift in Sources */,
 				AC15935125D97269007558C4 /* HistoryTVC.swift in Sources */,
 				ACE47B0825F8F29500AB878E /* History.swift in Sources */,
-				ACB171C325E03163001FC1DC /* LengthVM.swift in Sources */,
 				ACEC0F2525D94F1B00D52B70 /* UtilityConverter_iOS.xcdatamodeld in Sources */,
 				ACB171EC25E03D7C001FC1DC /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				ACA29CB725ED7D67004E55B2 /* UIColor+Color.swift in Sources */,
@@ -576,23 +568,19 @@
 				AC15934525D96894007558C4 /* MainTBC.swift in Sources */,
 				ACB171F425E0419C001FC1DC /* CustomKeyBoard.swift in Sources */,
 				ACEC0F4A25D95C6700D52B70 /* HomeVM.swift in Sources */,
+				AC7E3FC026022B0D007F4755 /* Date.swift in Sources */,
 				ACB171C025E03154001FC1DC /* LengthVC.swift in Sources */,
 				ACEC0F4625D95C5400D52B70 /* HomeVC.swift in Sources */,
 				ACEC0F1B25D94F1B00D52B70 /* AppDelegate.swift in Sources */,
-				ACB171B725E030BE001FC1DC /* WeightVM.swift in Sources */,
 				AC15934A25D97237007558C4 /* HistoryVC.swift in Sources */,
 				ACEC0F1D25D94F1B00D52B70 /* SceneDelegate.swift in Sources */,
-				ACB171C925E03185001FC1DC /* SpeedVM.swift in Sources */,
 				AC12583B25E442D700ECD058 /* Speed.swift in Sources */,
 				ACA29CB425ED7CF9004E55B2 /* Extensions.swift in Sources */,
+				AC7E3FBC26022989007F4755 /* TimeVC.swift in Sources */,
 				ACB171EE25E03D7C001FC1DC /* TPKeyboardAvoidingScrollView.m in Sources */,
-				ACB171BD25E030E6001FC1DC /* TemperatureVM.swift in Sources */,
 				ACB171DE25E037ED001FC1DC /* ApplicationServiceProvider.swift in Sources */,
 				ACEC0F4D25D95C8000D52B70 /* HomeCVCell.swift in Sources */,
-				AC15934E25D97250007558C4 /* HistoryVM.swift in Sources */,
-				ACB171CF25E031AE001FC1DC /* VolumeLiquidVM.swift in Sources */,
 				AC868C9A25E30E170095691A /* WeightVC.swift in Sources */,
-				ACB171D325E03596001FC1DC /* SettingsVM.swift in Sources */,
 				AC12583225E4363F00ECD058 /* Temperature.swift in Sources */,
 				ACB171A925E02B03001FC1DC /* Localizator.swift in Sources */,
 				ACB171D625E035A6001FC1DC /* SettingsVC.swift in Sources */,

@@ -12,7 +12,6 @@ private let WEIGHT_USER_DEFAULTS_MAX_COUNT = 5
 
 class WeightVC: UIViewController, CustomKeyBoardDelegate {
     
-    
     // MARK: - Outlets
     
     @IBOutlet weak var kilogramTF                   : UITextField!
@@ -32,13 +31,13 @@ class WeightVC: UIViewController, CustomKeyBoardDelegate {
     var activeTextField = UITextField()
     var outerStackViewTopConstraintDefaultHeight: CGFloat = 20
     
-    var decimalValue : String?
+    var precisionValue: Double = 100.0
     
     // MARK: - LifeCycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //sendSelectedDecimalValue(option: decimalValue ?? "Two")
+    
         configUI()
         
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(keyboardWillHide)))
@@ -46,9 +45,12 @@ class WeightVC: UIViewController, CustomKeyBoardDelegate {
         if isTextFieldsEmpty() {
             self.navigationItem.rightBarButtonItem!.isEnabled = false;
         }
+        
+        setDecimalValue()
     }
     
     override func viewWillAppear(_ animated: Bool) {
+       
         
         kilogramTF.setAsNumericKeyboard(delegate: self)
         gramTF.setAsNumericKeyboard(delegate: self)
@@ -57,7 +59,7 @@ class WeightVC: UIViewController, CustomKeyBoardDelegate {
         stoneTF.setAsNumericKeyboard(delegate: self)
         stonePoundsTF.setAsNumericKeyboard(delegate: self)
         
-        // Add an observer to track keyboard show event
+        // Observer to track keyboard show event
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)),
                                                name: UIResponder.keyboardWillShowNotification, object: nil)
     }
@@ -65,6 +67,8 @@ class WeightVC: UIViewController, CustomKeyBoardDelegate {
     // MARK: - ConfigUI
     
     func configUI() {
+        //viewBackground.applyGradient(isTopBottom: true, colorArray: UIColor.GradientColor.HomeView)
+        //viewBackground.backgroundColor = #colorLiteral(red: 0.007843137255, green: 0.08235294118, blue: 0.1568627451, alpha: 1)
         
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         self.navigationController!.navigationBar.tintColor = UIColor.white
@@ -74,8 +78,7 @@ class WeightVC: UIViewController, CustomKeyBoardDelegate {
         viewBackground.layer.cornerRadius = 10
     }
     
-    // MARK: Show keyboard function
-    // This function will recognize the first responder and adjust the textfield accordingly considering the keyboard
+    // MARK: - Show keyboard function , This function will recognize the first responder and adjust the textfield accordingly considering the keyboard
     
     @objc func keyboardWillShow(notification: NSNotification) {
         
@@ -115,8 +118,7 @@ class WeightVC: UIViewController, CustomKeyBoardDelegate {
         }
     }
     
-    // MARK: - Hide keyboard function
-    // This function will be called by the tap gesture outside the text field
+    // MARK: - Hide keyboard function, This function will be called by the tap gesture outside the text field
     
     @objc func keyboardWillHide() {
         view.endEditing(true)
@@ -127,8 +129,7 @@ class WeightVC: UIViewController, CustomKeyBoardDelegate {
         })
     }
     
-    // MARK: Find the first responder
-    // This fucntion will find the first responder in the UIView, Return a UIView or subview
+    // MARK: - Find the first responder, This fucntion will find the first responder in the UIView, Return a UIView or subview
     
     func findFirstResponder(inView view: UIView) -> UIView? {
         for subView in view.subviews {
@@ -143,6 +144,9 @@ class WeightVC: UIViewController, CustomKeyBoardDelegate {
         
         return nil
     }
+    
+    // MARK: - Handle the textfield editing
+    
     @IBAction func handleTextFieldEditing(_ textField: UITextField) {
         var unit: WeightUnit?
         
@@ -172,6 +176,7 @@ class WeightVC: UIViewController, CustomKeyBoardDelegate {
         
     }
     
+    // MARK: Checking if the textfield is empty
     
     func isTextFieldsEmpty() -> Bool {
         if !(kilogramTF.text?.isEmpty)! && !(gramTF.text?.isEmpty)! &&
@@ -181,6 +186,8 @@ class WeightVC: UIViewController, CustomKeyBoardDelegate {
         }
         return true
     }
+    
+    // MARK: - Updating textfields
     
     func updateTextFields(textField: UITextField, unit: WeightUnit) -> Void {
         if let input = textField.text {
@@ -197,31 +204,20 @@ class WeightVC: UIViewController, CustomKeyBoardDelegate {
                         let textField = mapUnitToTextField(unit: _unit)
                         let result = weight.convert(unit: _unit)
                         
+                        // Rounding off to required precision value
                         
-                        //rounding off to 4 decimal places
+                        let roundedResult = Double(round(precisionValue * result) / precisionValue)
+                        textField.text = String(roundedResult)
                         
-        
-//                        if decimalValue == "Two" {
-//                            let roundedResult = Double(round(100 * result) / 100)
-//                            textField.text = String(roundedResult)
-//                        } else if decimalValue == "Three" {
-//                            let roundedResult = Double(round(1000 * result) / 1000)
-//                            textField.text = String(roundedResult)
-//                        } else if decimalValue == "Four" {
-//                            let roundedResult = Double(round(10000 * result) / 10000)
-//                            textField.text = String(roundedResult)
-//                        }
-                        
-                                                let roundedResult = Double(round(10000 * result) / 10000)
-                                                textField.text = String(roundedResult)
-                        
-                        
+                        // Stone pound calculation
                         moderateStonePounds()
                     }
                 }
             }
         }
     }
+    
+    // MARK: - Mapping units to textfields
     
     func mapUnitToTextField(unit: WeightUnit) -> UITextField {
         var textField = kilogramTF
@@ -240,6 +236,8 @@ class WeightVC: UIViewController, CustomKeyBoardDelegate {
         return textField!
     }
     
+    // MARK: Clearing text fields
+    
     func clearTextFields() {
         kilogramTF.text    = ""
         gramTF.text        = ""
@@ -249,9 +247,11 @@ class WeightVC: UIViewController, CustomKeyBoardDelegate {
         stonePoundsTF.text = ""
     }
     
+    // MARK: - Saving History, This function will save the history to user defaults and check for the no of elements saved
+    
     @IBAction func handleSaveButtonClick(_ sender: UIBarButtonItem) {
         if !isTextFieldsEmpty() {
-            let conversion = "\(kilogramTF.text!) kg = \(gramTF.text!) g = \(ounceTF.text!) = oz = \(poundsTF.text!) lb = \(stoneTF.text!) stones & \(stonePoundsTF.text!) pounds"
+            let conversion = "\(kilogramTF.text!) kg = \(gramTF.text!) g = \(ounceTF.text!) oz = \(poundsTF.text!) lb = \(stoneTF.text!) stones & \(stonePoundsTF.text!) pounds"
             
             var  arrHistory = UserDefaults.standard.array(forKey: WEIGHT_USER_DEFAULTS_KEY) as? [String] ?? []
             
@@ -261,7 +261,7 @@ class WeightVC: UIViewController, CustomKeyBoardDelegate {
             arrHistory.append(conversion)
             UserDefaults.standard.set(arrHistory, forKey: WEIGHT_USER_DEFAULTS_KEY)
             
-            let alert = UIAlertController(title: "Success", message: "Weisght conversion succesfully saved", preferredStyle: UIAlertController.Style.alert)
+            let alert = UIAlertController(title: "Success", message: "Weight conversion succesfully saved", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         } else {
@@ -270,6 +270,8 @@ class WeightVC: UIViewController, CustomKeyBoardDelegate {
             self.present(alert, animated: true, completion: nil)
         }
     }
+    
+    // MARK: Stone pound conversion
     
     func moderateStonePounds() {
         if let textFieldVal = stoneTF.text {
@@ -284,8 +286,7 @@ class WeightVC: UIViewController, CustomKeyBoardDelegate {
         }
     }
     
-    
-    
+    // MARK:  Delegates of CustomKeyPad, This function is a part of the CustomNumericKeyboardDelegate interface
     
     func retractKeyPressed() {
         keyboardWillHide()
@@ -295,40 +296,34 @@ class WeightVC: UIViewController, CustomKeyBoardDelegate {
         print("Numeric key \(key) pressed!")
     }
     
-    /// This function is a part of the CustomNumericKeyboardDelegate interface
-    /// and will be triggered when the backspace button is pressed on the custom keyboard.
     func backspacePressed() {
         print("Backspace pressed!")
     }
     
-    /// This function is a part of the CustomNumericKeyboardDelegate interface
-    /// and will be triggered when the symobol buttons are pressed on the custom keyboard.
     func symbolPressed(symbol: String) {
         print("Symbol \(symbol) pressed!")
     }
-}
-
-extension WeightVC: DecimalValueDelegate {
     
-    func sendSelectedDecimalValue(option: String) {
+    // MARK:  Check for precision value from settings screen
+    
+    func setDecimalValue() {
         
-        print(option)
+        let precision =  UserDefaults.standard.object(forKey: "DecimalKey") as? String ?? ""
         
-        switch option {
-        case "Two":
-            print("2")
-            decimalValue = "Two"
-        case "Three":
-            print("3")
-            decimalValue = "Three"
-        case "Four":
-            print("4")
-            decimalValue = "Four"
+        switch precision {
+        case "2":
+            precisionValue = 100
+        case "3":
+            precisionValue = 1000
+        case "4":
+            precisionValue = 10000
         default:
-            break
+            precisionValue = 100
         }
     }
 }
+
+// MARK: - Extensions
 
 extension Float
 {

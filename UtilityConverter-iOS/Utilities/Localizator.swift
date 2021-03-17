@@ -57,6 +57,7 @@ extension String {
     static let VolumeLiquidVC = NSLocalizedString("VolumeLiquidVC", comment: "")
     static let HistoryVC = NSLocalizedString("HistoryVC", comment: "")
     static let SettingsVC = NSLocalizedString("HistoryVC", comment: "")
+    static let TimeVC = NSLocalizedString("TimeVC", comment: "")
     
     
     // Top viewController of the Storyboard
