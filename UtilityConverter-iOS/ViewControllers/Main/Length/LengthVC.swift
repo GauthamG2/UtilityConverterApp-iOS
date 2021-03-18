@@ -66,7 +66,7 @@ class LengthVC: UIViewController, CustomKeyBoardDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)),
                                                name: UIResponder.keyboardWillShowNotification, object: nil)
         
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "enableMinusButton"), object: nil)
+    
     }
     
     // MARK: - ConfigUI

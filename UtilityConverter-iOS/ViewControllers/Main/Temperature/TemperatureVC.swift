@@ -10,7 +10,6 @@ import UIKit
 let TEMPERATURE_USER_DEFAULTS_KEY = "temperature"
 private let TEMPERATURE_USER_DEFAULTS_MAX_COUNT = 5
 
-
 class TemperatureVC: UIViewController, CustomKeyBoardDelegate {
     
     // MARK: - Outlets
